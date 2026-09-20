@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<header class="portada">
+  <h1>Glosario de inteligencia artificial</h1>
+  <p class="entrada-portada">
+    Veinte términos para entender de qué se habla cuando se habla de IA, del aprendizaje
+    automático a los agentes autónomos. Cada ficha incluye una definición, un ejemplo de uso
+    y la página de IBM de donde proviene.
+  </p>
+
+  <form class="buscador" method="get" action="{{ url_for('inicio') }}" role="search">
+    <label class="oculto" for="q">Buscar un término</label>
+    <input type="search" id="q" name="q" value="{{ consulta }}"
+           placeholder="Busca por término o por palabra dentro de la definición"
+           autocomplete="off">
+    <button class="boton" type="submit">Buscar</button>
+  </form>
+
+  <div class="filtros" id="filtros">
+    <a class="filtro {{ 'activo' if not categoria_activa }}"
+       href="{{ url_for('inicio') }}" data-categoria="">Todas</a>
+    {% for categoria in categorias %}
+      <a class="filtro {{ 'activo' if categoria_activa == categoria }}"
+         href="{{ url_for('inicio', categoria=categoria) }}" data-categoria="{{ categoria }}">{{ categoria }}</a>
+    {% endfor %}
+  </div>
+</header>
+
+<div class="cuerpo">
+  <nav class="indice" aria-label="Índice de términos">
+    <h2>Los 20 términos</h2>
+    <ol>
+      {% for entrada in glosario %}
+        <li>
+          <a href="#t-{{ entrada.id }}">
+            <span class="numero">{{ '%02d' % entrada.id }}</span>
+            <span>{{ entrada.termino }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ol>
+  </nav>
+
+  <div>
+    <p class="conteo" id="conteo" aria-live="polite">
+      {% if consulta or categoria_activa %}
+        {{ entradas|length }} de {{ total }} términos
+      {% else %}
+        {{ total }} términos en {{ categorias|length }} categorías
+      {% endif %}
+    </p>
+
+    <section id="lista">
+      {% for entrada in entradas %}
+        <article class="termino" id="t-{{ entrada.id }}" data-categoria="{{ entrada.categoria }}"
+                 data-busqueda="{{ (entrada.termino ~ ' ' ~ entrada.ingles ~ ' ' ~ entrada.definicion)|lower }}">
+          <h3>
+            <span class="numero">{{ '%02d' % entrada.id }}</span>
+            <a href="{{ url_for('termino', numero=entrada.id) }}">{{ entrada.termino }}</a>
+          </h3>
+          <p class="meta">
+            {{ entrada.ingles }}<span class="categoria">{{ entrada.categoria }}</span>
+          </p>
+          <p class="definicion">{{ entrada.definicion }}</p>
+          <p class="ejemplo">{{ entrada.ejemplo }}</p>
+          <p class="fuente"><a href="{{ entrada.fuente }}">Fuente en IBM Think</a></p>
+        </article>
+      {% endfor %}
+    </section>
+
+    <p class="vacio {{ '' if entradas|length == 0 else 'oculto' }}" id="vacio">
+      Ningún término coincide con esa búsqueda. Prueba con palabras como red, modelo, datos o sesgo.
+    </p>
+
+    <section class="estudio" id="estudio">
+      <h2>Modo estudio</h2>
+      <p>Cinco definiciones al azar: elige a qué término corresponde cada una.</p>
+      <button class="boton" type="button" id="iniciar-estudio">Iniciar cuestionario</button>
+      <div id="cuestionario" class="oculto"></div>
+      <p class="marcador oculto" id="marcador" aria-live="polite"></p>
+    </section>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script id="datos-glosario" type="application/json">{{ glosario|tojson }}</script>
+<script src="{{ url_for('static', filename='glosario.js') }}"></script>
+{% endblock %}

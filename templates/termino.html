@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ entrada.termino }} — Glosario de IA{% endblock %}
+
+{% block contenido %}
+<article class="ficha">
+  <p class="meta"><a href="{{ url_for('inicio') }}">Volver al glosario</a></p>
+
+  <h1 style="font-family: var(--serif); font-size: clamp(1.8rem, 5vw, 2.6rem); line-height: 1.15; margin: 0 0 0.5rem;">
+    <span class="numero" style="color: var(--resalte); font-family: var(--sans); font-size: 0.9rem; vertical-align: 0.9em;">{{ '%02d' % entrada.id }}</span>
+    {{ entrada.termino }}
+  </h1>
+
+  <p class="meta">{{ entrada.ingles }}<span class="categoria">{{ entrada.categoria }}</span></p>
+  <p class="definicion">{{ entrada.definicion }}</p>
+  <p class="ejemplo">{{ entrada.ejemplo }}</p>
+  <p class="fuente"><a href="{{ entrada.fuente }}">Fuente en IBM Think</a></p>
+
+  <nav class="navegacion-ficha">
+    <span>
+      {% if anterior %}<a href="{{ url_for('termino', numero=anterior) }}">Término anterior</a>{% endif %}
+    </span>
+    <span>
+      {% if siguiente %}<a href="{{ url_for('termino', numero=siguiente) }}">Término siguiente</a>{% endif %}
+    </span>
+  </nav>
+</article>
+{% endblock %}

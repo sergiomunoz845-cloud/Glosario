@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{% block titulo %}Glosario de Inteligencia Artificial{% endblock %}</title>
+  <meta name="description" content="Glosario de 20 términos de inteligencia artificial con definiciones, ejemplos y fuentes de la documentación de IBM.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+<body>
+  <main class="contenedor">
+    {% block contenido %}{% endblock %}
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor">
+      <p>
+        Glosario de 20 términos de inteligencia artificial. Definiciones elaboradas a partir de la
+        documentación de <a href="https://www.ibm.com/mx-es/think/topics/artificial-intelligence">IBM Think</a>.
+        Los datos también están disponibles en <a href="{{ url_for('api_glosario') }}">formato JSON</a>.
+      </p>
+    </div>
+  </footer>
+
+  {% block scripts %}{% endblock %}
+</body>
+</html>
