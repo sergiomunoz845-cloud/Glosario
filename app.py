@@ -99,6 +99,22 @@ def no_encontrado(error):
     return render_template("404.html"), 404
 
 
+@app.route('/etica-ia')
+def etica_ia():
+    ensayo = {
+        "titulo": "Ética y Aspectos Sociales de la Inteligencia Artificial",
+        "contenido": [
+            "La Inteligencia Artificial (IA) ha dejado de ser una promesa de la ciencia ficción para convertirse en el motor de la Cuarta Revolución Industrial. Su capacidad para procesar datos a escala masiva, automatizar decisiones y predecir comportamientos plantea dilemas éticos y sociales que requieren atención inmediata. La tecnología no es neutral; hereda, procesa y amplifica los valores de quienes la diseñan y de los datos con los que es alimentada.",
+            "Uno de los desafíos más urgentes es el sesgo algorítmico. Los modelos de IA aprenden de bases de datos históricas generadas por humanos, las cuales contienen prejuicios sistémicos y culturales. Si estos modelos no se auditan rigurosamente, corren el riesgo de perpetuar o amplificar la discriminación en áreas críticas como la selección de personal, la evaluación crediticia, el diagnóstico médico o los sistemas de justicia penal.",
+            "Otro pilar fundamental es la transparencia y la explicabilidad. Muchos de los modelos más avanzados, como las redes neuronales profundas, operan como 'cajas negras'. Resulta extremadamente difícil rastrear el razonamiento exacto que llevó a una IA a una conclusión específica. Cuando la tecnología toma decisiones que afectan derechos fundamentales, el derecho a una explicación comprensible se vuelve una exigencia.",
+            "En el ámbito socioeconómico, la automatización impulsada por la IA está reconfigurando el mercado laboral. Mientras que promete aumentar la productividad y crear nuevas categorías de empleo, también amenaza con el desplazamiento de trabajadores. Esta transición exige políticas públicas enfocadas en la reconversión laboral, garantizando que los beneficios no ensanchen la brecha de desigualdad económica.",
+            "La privacidad y la gobernanza de datos representan otra tensión ética crítica. La recolección masiva de datos para entrenar estos sistemas genera preocupaciones sobre el consentimiento informado, la vigilancia y la propiedad de la información. Proteger la autonomía individual frente al perfilado predictivo requiere normativas estrictas desde el diseño.",
+            "El verdadero desafío de la Inteligencia Artificial no es técnico, sino moral. Su desarrollo y despliegue deben estar acompañados de marcos regulatorios robustos y una ética centrada en el ser humano, asegurando que la IA actúe como una herramienta para el bienestar colectivo."
+        ]
+    }
+    return render_template('ensayo.html', ensayo=ensayo)
+
+
 if __name__ == "__main__":
     # debug=True recarga el servidor al guardar cambios; quítalo al entregar.
     app.run(host="127.0.0.1", port=5000, debug=True)

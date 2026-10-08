@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ ensayo.titulo }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans antialiased min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+
+    <div class="max-w-3xl mx-auto bg-white p-8 sm:p-12 shadow-md rounded-lg relative">
+
+        <!-- Botón para regresar al Glosario -->
+        <a href="/" class="absolute top-8 right-8 text-blue-600 hover:text-blue-800 font-semibold text-sm transition-colors">
+            &larr; Volver al Glosario
+        </a>
+
+        <header class="mb-8 border-b border-gray-200 pb-6 pr-24">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 leading-tight">
+                {{ ensayo.titulo }}
+            </h1>
+        </header>
+
+        <article class="space-y-6 text-lg text-gray-700 leading-relaxed text-justify">
+            {% for parrafo in ensayo.contenido %}
+                <p>{{ parrafo }}</p>
+            {% endfor %}
+        </article>
+
+    </div>
+</body>
+</html>
