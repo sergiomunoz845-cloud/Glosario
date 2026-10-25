@@ -13,10 +13,11 @@ glosario_web/
 ├── requirements.txt        Dependencias
 ├── static/
 │   ├── estilos.css         Diseño de la página
-│   └── glosario.js         Búsqueda en vivo y cuestionario
+│   ├── glosario.js         Búsqueda en vivo y cuestionario
+│   └── infografia-algoritmos-busqueda.jpg  Infografía sobre algoritmos de búsqueda
 └── templates/
     ├── base.html           Plantilla común (encabezado, pie, tipografías)
-    ├── index.html          Portada: buscador, índice, fichas, modo estudio
+    ├── index.html          Portada: buscador, índice, fichas, modo estudio e infografía
     ├── termino.html        Ficha individual de un término
     └── 404.html            Página de error
 ```
@@ -55,9 +56,9 @@ Si necesitas subirla a GitHub Pages o entregar un solo archivo:
 python exportar_estatico.py
 ```
 
-Genera `glosario_ia_web.html` con el CSS, el JavaScript y los datos incrustados. Se abre con
-doble clic y conserva la búsqueda, los filtros y el cuestionario. Lo único que deja de existir
-es la ruta `/api/glosario`, porque ya no hay servidor de Python.
+Genera `glosario_ia_web.html` con el CSS, el JavaScript, los datos y la infografía incrustados.
+Se abre con doble clic y conserva la búsqueda, los filtros y el cuestionario. Lo único que deja
+de existir es la ruta `/api/glosario`, porque ya no hay servidor de Python.
 
 ## Publicarlo en internet con Python
 

@@ -10,6 +10,7 @@ Uso:
     python exportar_estatico.py [archivo_de_salida.html]
 """
 
+import base64
 import re
 import sys
 from pathlib import Path
@@ -40,6 +41,11 @@ def exportar(salida="glosario_ia_web.html"):
         lambda _: "<script>\n" + js + "\n</script>",
         html,
     )
+
+    # La infografía también debe funcionar al abrir el HTML sin servidor.
+    infografia = (BASE / "static" / "infografia-algoritmos-busqueda.jpg").read_bytes()
+    imagen_data = "data:image/jpeg;base64," + base64.b64encode(infografia).decode("ascii")
+    html = html.replace("/static/infografia-algoritmos-busqueda.jpg", imagen_data)
 
     # 2. Sin servidor no hay rutas /termino/<id>: se enlaza dentro de la página.
     html = re.sub(r'href="/termino/(\d+)"', r'href="#t-\1"', html)

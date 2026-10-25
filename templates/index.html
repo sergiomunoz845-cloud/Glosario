@@ -9,6 +9,7 @@
     y la página de IBM de donde proviene.
   </p>
   <p><a class="boton" href="{{ url_for('etica_ia') }}">Leer ensayo: ética y aspectos sociales de la IA</a></p>
+  <p><a href="#infografia-busqueda">Ir a la infografía: algoritmos de búsqueda</a></p>
 
   <form class="buscador" method="get" action="{{ url_for('inicio') }}" role="search">
     <label class="oculto" for="q">Buscar un término</label>
@@ -80,6 +81,18 @@
       <button class="boton" type="button" id="iniciar-estudio">Iniciar cuestionario</button>
       <div id="cuestionario" class="oculto"></div>
       <p class="marcador oculto" id="marcador" aria-live="polite"></p>
+    </section>
+
+    <section class="infografia" id="infografia-busqueda" aria-labelledby="titulo-infografia">
+      <h2 id="titulo-infografia">Infografía: tipos de algoritmos de búsqueda</h2>
+      <p>Una guía visual para comparar algoritmos según la información disponible, la precisión,
+        la estructura de datos y el entorno en el que se utilizan.</p>
+      <figure>
+        <img src="{{ url_for('static', filename='infografia-algoritmos-busqueda.jpg') }}"
+             alt="Infografía sobre tipos de algoritmos de búsqueda: búsqueda ciega y guiada, métodos exactos y aproximados, estructuras lineales, no lineales y directas, y búsqueda en juegos."
+             loading="lazy">
+        <figcaption>Resumen visual de distintas estrategias de búsqueda y un ejemplo de navegación con A*.</figcaption>
+      </figure>
     </section>
   </div>
 </div>

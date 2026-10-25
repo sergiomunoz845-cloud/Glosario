@@ -349,6 +349,45 @@ input:focus-visible {
   margin-top: 1rem;
 }
 
+/* ---------- Infografía ---------- */
+
+.infografia {
+  border-top: 1px solid var(--linea);
+  margin-top: 3rem;
+  padding-top: 2rem;
+}
+
+.infografia h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 3.2vw, 1.8rem);
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.infografia > p {
+  color: var(--tinta-suave);
+  max-width: 64ch;
+}
+
+.infografia figure {
+  margin: 1.5rem auto 0;
+  max-width: 38rem;
+}
+
+.infografia img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--linea);
+  border-radius: 2px;
+}
+
+.infografia figcaption {
+  color: var(--tinta-suave);
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
 /* ---------- Ficha individual y pie ---------- */
 
 .ficha { padding: 3rem 0 4rem; max-width: 46rem; }
